@@ -1,16 +1,618 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Programme d'étude</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programme d'étude</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue: #4f8ef7;
+      --blue-dark: #3b78e7;
+      --blue-light: #e8f0fe;
+      --purple: #7c5cbf;
+      --purple-light: #f0eaff;
+      --green: #34c77b;
+      --green-light: #e6faf1;
+      --orange: #f59e0b;
+      --orange-light: #fff8e6;
+      --red: #ef4444;
+      --red-light: #fee2e2;
+      --bg: #f0f4fb;
+      --card: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --shadow-hover: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 16px;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 24px 16px 20px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .header h1 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .header p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-top: 4px;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ── Message ── */
+    .message {
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: none;
+      text-align: center;
+    }
+    .message.success { background: var(--green-light); color: #166534; }
+    .message.error   { background: var(--red-light);   color: #991b1b; }
+
+    /* ── Card ── */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    /* ── Auth ── */
+    #auth-section .card { max-width: 440px; margin: 40px auto; }
+    .auth-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .auth-sub {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .auth-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    #app-section { display: none; }
+
+    /* ── Inputs ── */
+    .field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+    .field label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="text"],
+    input[type="time"],
+    select {
+      width: 100%;
+      padding: 10px 13px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: #fff;
+      transition: border-color 0.15s;
+      outline: none;
+      appearance: none;
+    }
+    input:focus, select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(79,142,247,0.15); }
+
+    /* Row: two columns */
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 480px) {
+      .row { grid-template-columns: 1fr; }
+    }
+
+    /* ── Buttons ── */
+    button {
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 10px 16px;
+      transition: transform 0.1s, box-shadow 0.15s, background 0.15s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    button:active { transform: scale(0.97); }
+
+    .btn-primary   { background: var(--blue);   color: #fff; width: 100%; margin-top: 6px; }
+    .btn-primary:hover   { background: var(--blue-dark); }
+    .btn-signup    { background: var(--purple);  color: #fff; }
+    .btn-signup:hover    { background: #6b4fa5; }
+    .btn-danger    { background: var(--red-light);   color: var(--red);   font-size: 0.8rem; padding: 7px 12px; }
+    .btn-danger:hover    { background: var(--red); color: #fff; }
+    .btn-success   { background: var(--green-light); color: #166534; font-size: 0.8rem; padding: 7px 12px; }
+    .btn-success:hover   { background: var(--green); color: #fff; }
+    .btn-gray      { background: var(--border); color: var(--text-muted); font-size: 0.8rem; padding: 7px 12px; }
+    .btn-gray:hover      { background: #cbd5e1; }
+    .btn-logout    { background: transparent; color: var(--red); border: 1.5px solid var(--red-light); font-size: 0.8rem; padding: 6px 12px; }
+    .btn-logout:hover    { background: var(--red-light); }
+
+    /* ── Stats ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 380px) {
+      .stats { grid-template-columns: 1fr; }
+    }
+    .stat-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px 12px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .stat-number { font-size: clamp(1.6rem, 5vw, 2.2rem); font-weight: 800; line-height: 1; }
+    .stat-label  { font-size: 0.75rem; font-weight: 500; color: var(--text-muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .stat-total   { color: var(--blue); }
+    .stat-pending { color: var(--orange); }
+    .stat-done    { color: var(--green); }
+
+    /* ── Filters ── */
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .filter-btn {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.15s;
+    }
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    /* ── Task list ── */
+    #tasks-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .task-item {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      background: #fff;
+      transition: box-shadow 0.15s, transform 0.1s;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .task-item:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+    .task-item.done    { opacity: 0.65; border-left: 4px solid var(--green); }
+    .task-item.pending { border-left: 4px solid var(--orange); }
+
+    .task-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .task-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+      flex: 1;
+      min-width: 0;
+      word-break: break-word;
+    }
+    .task-title.done-text { text-decoration: line-through; color: var(--text-muted); }
+
+    .task-actions {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    .task-meta {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge-time     { background: var(--blue-light);   color: var(--blue-dark); }
+    .badge-category { background: var(--purple-light); color: var(--purple); }
+    .badge-haute    { background: var(--red-light);    color: var(--red); }
+    .badge-normale  { background: var(--green-light);  color: #166534; }
+    .badge-basse    { background: var(--orange-light); color: #92400e; }
+
+    /* ── Empty state ── */
+    .empty {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 36px 20px;
+      font-size: 0.9rem;
+    }
+    .empty-icon { font-size: 2.5rem; margin-bottom: 8px; }
+
+    /* ── Responsive: tablet+ two-column layout ── */
+    @media (min-width: 700px) {
+      body { padding: 24px; }
+      .main-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        align-items: start;
+      }
+      .main-grid .full-width { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>📚 Programme d'étude</h1>
+    <p>Organise tes sessions et reste productif</p>
+  </div>
+
+  <div id="message" class="message"></div>
+
+  <!-- ══ AUTH ══ -->
+  <div id="auth-section">
+    <div class="card">
+      <div class="auth-title">Bienvenue 👋</div>
+      <div class="auth-sub">Connecte-toi pour accéder à ton programme</div>
+      <div class="field">
+        <label>Adresse email</label>
+        <input type="email" id="email" placeholder="exemple@mail.com" autocomplete="email" />
+      </div>
+      <div class="field">
+        <label>Mot de passe</label>
+        <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+      <div class="auth-btns">
+        <button class="btn-primary" style="margin-top:0" onclick="login()">Se connecter</button>
+        <button class="btn-signup" onclick="signup()">S'inscrire</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ APP ══ -->
+  <div id="app-section">
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number stat-total" id="stat-total">0</div>
+        <div class="stat-label">Total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number stat-pending" id="stat-pending">0</div>
+        <div class="stat-label">En attente</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number stat-done" id="stat-done">0</div>
+        <div class="stat-label">Terminées</div>
+      </div>
+    </div>
+
+    <!-- Two-column on tablet+ -->
+    <div class="main-grid">
+
+      <!-- Form -->
+      <div class="card">
+        <div class="card-title">
+          <span>➕ Nouvelle tâche</span>
+          <button class="btn-logout" onclick="logout()">Déconnexion</button>
+        </div>
+        <div class="field">
+          <label>Titre</label>
+          <input type="text" id="new-task" placeholder="Ex: Révision Maths Chapitre 3" />
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>Début</label>
+            <input type="time" id="start-time" />
+          </div>
+          <div class="field">
+            <label>Fin</label>
+            <input type="time" id="end-time" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>Catégorie</label>
+            <select id="category">
+              <option value="etude">📖 Étude</option>
+              <option value="revision">🔄 Révision</option>
+              <option value="exercice">✏️ Exercice</option>
+              <option value="lecture">📚 Lecture</option>
+              <option value="projet">💼 Projet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Priorité</label>
+            <select id="priority">
+              <option value="normale">🟢 Normale</option>
+              <option value="haute">🔴 Haute</option>
+              <option value="basse">🟡 Basse</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="createTask()">➕ Ajouter la tâche</button>
+      </div>
+
+      <!-- Task list -->
+      <div class="card full-width" style="grid-column: unset">
+        <div class="card-title">📋 Mes tâches</div>
+        <div class="filters">
+          <button class="filter-btn active" onclick="setFilter('toutes', this)">Toutes</button>
+          <button class="filter-btn" onclick="setFilter('pending', this)">⏳ En attente</button>
+          <button class="filter-btn" onclick="setFilter('done', this)">✅ Terminées</button>
+        </div>
+        <div id="tasks-list"></div>
+      </div>
+
+    </div><!-- /main-grid -->
+
+  </div><!-- /app-section -->
+
+</div><!-- /container -->
+
+<script>
+  const SUPABASE_URL = "https://bxpatupsirntpwkkrjas.supabase.co";
+  const ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4cGF0dXBzaXJudHB3a2tyamFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5NDEzMjAsImV4cCI6MjA5MTUxNzMyMH0.cDkJIBYIdNJHhmQqQVJbiooO17ERBQ9z0Icf7zaXyFg";
+
+  let token = null;
+  let userId = null;
+  let currentFilter = "toutes";
+  let allTasks = [];
+
+  function showMessage(msg, type = "success") {
+    const el = document.getElementById("message");
+    el.className = "message " + type;
+    el.textContent = msg;
+    el.style.display = "block";
+    setTimeout(() => { el.style.display = "none"; }, 3000);
+  }
+
+  async function signup() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    if (!email || !password) return showMessage("Email et mot de passe requis", "error");
+    const res = await fetch(`${SUPABASE_URL}/auth/v1/signup`, {
+      method: "POST",
+      headers: { "apikey": ANON_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    if (data.access_token) {
+      token = data.access_token;
+      userId = data.user.id;
+      showMessage("Inscription réussie !");
+      showApp();
+      loadTasks();
+    } else {
+      showMessage(data.msg || data.error_description || "Erreur lors de l'inscription", "error");
+    }
+  }
+
+  async function login() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    if (!email || !password) return showMessage("Email et mot de passe requis", "error");
+    const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+      method: "POST",
+      headers: { "apikey": ANON_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    if (data.access_token) {
+      token = data.access_token;
+      userId = data.user.id;
+      showMessage("Connecté avec succès !");
+      showApp();
+      loadTasks();
+    } else {
+      showMessage(data.msg || data.error_description || "Identifiants incorrects", "error");
+    }
+  }
+
+  function logout() {
+    token = null; userId = null; allTasks = [];
+    document.getElementById("auth-section").style.display = "block";
+    document.getElementById("app-section").style.display = "none";
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+  }
+
+  function showApp() {
+    document.getElementById("auth-section").style.display = "none";
+    document.getElementById("app-section").style.display = "block";
+  }
+
+  function setFilter(filter, btn) {
+    currentFilter = filter;
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderTasks();
+  }
+
+  async function loadTasks() {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/tasks?order=start_time.asc`, {
+      headers: { "apikey": ANON_KEY, "Authorization": `Bearer ${token}` }
+    });
+    allTasks = await res.json();
+    if (!Array.isArray(allTasks)) allTasks = [];
+    updateStats();
+    renderTasks();
+  }
+
+  function updateStats() {
+    const total = allTasks.length;
+    const done = allTasks.filter(t => t.done).length;
+    const pending = total - done;
+    document.getElementById("stat-total").textContent = total;
+    document.getElementById("stat-done").textContent = done;
+    document.getElementById("stat-pending").textContent = pending;
+  }
+
+  const catLabels = { etude: "📖 Étude", revision: "🔄 Révision", exercice: "✏️ Exercice", lecture: "📚 Lecture", projet: "💼 Projet" };
+  const prioIcon  = { haute: "🔴", normale: "🟢", basse: "🟡" };
+
+  function renderTasks() {
+    let filtered = allTasks;
+    if (currentFilter === "done")    filtered = allTasks.filter(t => t.done);
+    if (currentFilter === "pending") filtered = allTasks.filter(t => !t.done);
+
+    const list = document.getElementById("tasks-list");
+    if (filtered.length === 0) {
+      list.innerHTML = `
+        <div class="empty">
+          <div class="empty-icon">📭</div>
+          Aucune tâche ici
+        </div>`;
+      return;
+    }
+
+    list.innerHTML = filtered.map(t => `
+      <div class="task-item ${t.done ? 'done' : 'pending'}">
+        <div class="task-header">
+          <span class="task-title ${t.done ? 'done-text' : ''}">${escHtml(t.title)}</span>
+          <div class="task-actions">
+            <button class="${t.done ? 'btn-gray' : 'btn-success'}" onclick="toggleTask('${t.id}', ${t.done})">
+              ${t.done ? '↩ Annuler' : '✅ Fait'}
+            </button>
+            <button class="btn-danger" onclick="deleteTask('${t.id}')">🗑</button>
+          </div>
+        </div>
+        <div class="task-meta">
+          ${t.start_time ? `<span class="badge badge-time">⏰ ${t.start_time}${t.end_time ? ' - ' + t.end_time : ''}</span>` : ''}
+          ${t.category ? `<span class="badge badge-category">${catLabels[t.category] || t.category}</span>` : ''}
+          ${t.priority ? `<span class="badge badge-${t.priority}">${prioIcon[t.priority] || ''} ${t.priority}</span>` : ''}
+        </div>
+      </div>
+    `).join("");
+  }
+
+  function escHtml(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  async function createTask() {
+    const title = document.getElementById("new-task").value.trim();
+    if (!title) return showMessage("Le titre est requis", "error");
+    const start_time = document.getElementById("start-time").value || null;
+    const end_time   = document.getElementById("end-time").value   || null;
+    const category   = document.getElementById("category").value;
+    const priority   = document.getElementById("priority").value;
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/tasks`, {
+      method: "POST",
+      headers: {
+        "apikey": ANON_KEY,
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify({ title, start_time, end_time, category, priority, user_id: userId })
+    });
+    if (res.ok || res.status === 201) {
+      document.getElementById("new-task").value = "";
+      document.getElementById("start-time").value = "";
+      document.getElementById("end-time").value = "";
+      showMessage("Tâche ajoutée !");
+      loadTasks();
+    } else {
+      showMessage("Erreur lors de l'ajout", "error");
+    }
+  }
+
+  async function toggleTask(id, done) {
+    await fetch(`${SUPABASE_URL}/rest/v1/tasks?id=eq.${id}`, {
+      method: "PATCH",
+      headers: {
+        "apikey": ANON_KEY,
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ done: !done })
+    });
+    loadTasks();
+  }
+
+  async function deleteTask(id) {
+    if (!confirm("Supprimer cette tâche ?")) return;
+    await fetch(`${SUPABASE_URL}/rest/v1/tasks?id=eq.${id}`, {
+      method: "DELETE",
+      headers: { "apikey": ANON_KEY, "Authorization": `Bearer ${token}` }
+    });
+    loadTasks();
+  }
+</script>
+</body>
 </html>
