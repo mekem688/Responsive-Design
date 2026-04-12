@@ -41,7 +41,6 @@
       padding: 16px;
     }
 
-    /* ── Header ── */
     .header {
       text-align: center;
       margin-bottom: 24px;
@@ -50,266 +49,214 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
-    .header h1 {
-      font-size: clamp(1.4rem, 4vw, 2rem);
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.02em;
-    }
-    .header p {
-      color: var(--text-muted);
-      font-size: 0.875rem;
-      margin-top: 4px;
-    }
+    .header h1 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+    .header p  { color: var(--text-muted); font-size: 0.875rem; margin-top: 4px; }
 
-    /* ── Layout ── */
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+    .container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
 
-    /* ── Message ── */
-    .message {
-      padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      font-size: 0.875rem;
-      font-weight: 500;
-      display: none;
-      text-align: center;
-    }
+    .message { padding: 12px 16px; border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 500; display: none; text-align: center; }
     .message.success { background: var(--green-light); color: #166534; }
     .message.error   { background: var(--red-light);   color: #991b1b; }
 
-    /* ── Card ── */
-    .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-    }
-    .card-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
+    .card { background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+    .card-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 
-    /* ── Auth ── */
     #auth-section .card { max-width: 440px; margin: 40px auto; }
-    .auth-title {
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-      text-align: center;
-    }
-    .auth-sub {
-      font-size: 0.83rem;
-      color: var(--text-muted);
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .auth-btns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 14px;
-    }
+    .auth-title { font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; text-align: center; }
+    .auth-sub   { font-size: 0.83rem; color: var(--text-muted); text-align: center; margin-bottom: 20px; }
+    .auth-btns  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
     #app-section { display: none; }
 
-    /* ── Inputs ── */
     .field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
     .field label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
 
-    input[type="email"],
-    input[type="password"],
-    input[type="text"],
-    input[type="time"],
-    select {
-      width: 100%;
-      padding: 10px 13px;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
-      background: #fff;
-      transition: border-color 0.15s;
-      outline: none;
-      appearance: none;
+    input[type="email"], input[type="password"], input[type="text"], input[type="time"], select {
+      width: 100%; padding: 10px 13px; border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      font-size: 0.9rem; font-family: 'Inter', sans-serif; color: var(--text); background: #fff;
+      transition: border-color 0.15s; outline: none; appearance: none;
     }
     input:focus, select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(79,142,247,0.15); }
 
-    /* Row: two columns */
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    @media (max-width: 480px) {
-      .row { grid-template-columns: 1fr; }
-    }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media (max-width: 480px) { .row { grid-template-columns: 1fr; } }
 
-    /* ── Buttons ── */
     button {
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-size: 0.875rem;
-      font-weight: 600;
-      padding: 10px 16px;
+      font-family: 'Inter', sans-serif; cursor: pointer; border: none; border-radius: var(--radius-sm);
+      font-size: 0.875rem; font-weight: 600; padding: 10px 16px;
       transition: transform 0.1s, box-shadow 0.15s, background 0.15s;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
     }
     button:active { transform: scale(0.97); }
 
-    .btn-primary   { background: var(--blue);   color: #fff; width: 100%; margin-top: 6px; }
-    .btn-primary:hover   { background: var(--blue-dark); }
-    .btn-signup    { background: var(--purple);  color: #fff; }
-    .btn-signup:hover    { background: #6b4fa5; }
-    .btn-danger    { background: var(--red-light);   color: var(--red);   font-size: 0.8rem; padding: 7px 12px; }
-    .btn-danger:hover    { background: var(--red); color: #fff; }
-    .btn-success   { background: var(--green-light); color: #166534; font-size: 0.8rem; padding: 7px 12px; }
-    .btn-success:hover   { background: var(--green); color: #fff; }
-    .btn-gray      { background: var(--border); color: var(--text-muted); font-size: 0.8rem; padding: 7px 12px; }
-    .btn-gray:hover      { background: #cbd5e1; }
-    .btn-logout    { background: transparent; color: var(--red); border: 1.5px solid var(--red-light); font-size: 0.8rem; padding: 6px 12px; }
-    .btn-logout:hover    { background: var(--red-light); }
+    .btn-primary  { background: var(--blue);        color: #fff; width: 100%; margin-top: 6px; }
+    .btn-primary:hover  { background: var(--blue-dark); }
+    .btn-signup   { background: var(--purple);       color: #fff; }
+    .btn-signup:hover   { background: #6b4fa5; }
+    .btn-danger   { background: var(--red-light);    color: var(--red);      font-size: 0.8rem; padding: 7px 12px; }
+    .btn-danger:hover   { background: var(--red);    color: #fff; }
+    .btn-success  { background: var(--green-light);  color: #166534;         font-size: 0.8rem; padding: 7px 12px; }
+    .btn-success:hover  { background: var(--green);  color: #fff; }
+    .btn-gray     { background: var(--border);       color: var(--text-muted); font-size: 0.8rem; padding: 7px 12px; }
+    .btn-gray:hover     { background: #cbd5e1; }
+    .btn-logout   { background: transparent; color: var(--red); border: 1.5px solid var(--red-light); font-size: 0.8rem; padding: 6px 12px; }
+    .btn-logout:hover   { background: var(--red-light); }
+    .btn-timer    { background: var(--blue-light);   color: var(--blue);     font-size: 0.8rem; padding: 7px 12px; }
+    .btn-timer:hover    { background: var(--blue);   color: #fff; }
 
-    /* ── Stats ── */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    @media (max-width: 380px) {
-      .stats { grid-template-columns: 1fr; }
-    }
-    .stat-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 18px 12px;
-      text-align: center;
-      box-shadow: var(--shadow);
-    }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 380px) { .stats { grid-template-columns: 1fr; } }
+    .stat-card { background: var(--card); border-radius: var(--radius); padding: 18px 12px; text-align: center; box-shadow: var(--shadow); }
     .stat-number { font-size: clamp(1.6rem, 5vw, 2.2rem); font-weight: 800; line-height: 1; }
     .stat-label  { font-size: 0.75rem; font-weight: 500; color: var(--text-muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
     .stat-total   { color: var(--blue); }
     .stat-pending { color: var(--orange); }
     .stat-done    { color: var(--green); }
 
-    /* ── Filters ── */
-    .filters {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-    .filter-btn {
-      padding: 7px 14px;
-      border-radius: 999px;
-      border: 1.5px solid var(--border);
-      background: #fff;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      font-weight: 600;
-      transition: all 0.15s;
-    }
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: #fff;
-    }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .filter-btn { padding: 7px 14px; border-radius: 999px; border: 1.5px solid var(--border); background: #fff; color: var(--text-muted); font-size: 0.8rem; font-weight: 600; transition: all 0.15s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
 
-    /* ── Task list ── */
     #tasks-list { display: flex; flex-direction: column; gap: 10px; }
 
-    .task-item {
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 14px;
-      background: #fff;
-      transition: box-shadow 0.15s, transform 0.1s;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .task-item { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 14px; background: #fff; transition: box-shadow 0.15s, transform 0.1s; display: flex; flex-direction: column; gap: 8px; }
     .task-item:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
     .task-item.done    { opacity: 0.65; border-left: 4px solid var(--green); }
     .task-item.pending { border-left: 4px solid var(--orange); }
 
-    .task-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .task-title {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--text);
-      flex: 1;
-      min-width: 0;
-      word-break: break-word;
-    }
+    .task-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .task-title  { font-weight: 700; font-size: 0.95rem; color: var(--text); flex: 1; min-width: 0; word-break: break-word; }
     .task-title.done-text { text-decoration: line-through; color: var(--text-muted); }
+    .task-actions { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; }
 
-    .task-actions {
-      display: flex;
-      gap: 6px;
-      flex-shrink: 0;
-      flex-wrap: wrap;
-    }
-
-    .task-meta {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .badge {
-      padding: 3px 9px;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      white-space: nowrap;
-    }
+    .task-meta { display: flex; gap: 6px; flex-wrap: wrap; }
+    .badge { padding: 3px 9px; border-radius: 999px; font-size: 0.72rem; font-weight: 600; white-space: nowrap; }
     .badge-time     { background: var(--blue-light);   color: var(--blue-dark); }
     .badge-category { background: var(--purple-light); color: var(--purple); }
     .badge-haute    { background: var(--red-light);    color: var(--red); }
     .badge-normale  { background: var(--green-light);  color: #166534; }
     .badge-basse    { background: var(--orange-light); color: #92400e; }
 
-    /* ── Empty state ── */
-    .empty {
-      text-align: center;
-      color: var(--text-muted);
-      padding: 36px 20px;
-      font-size: 0.9rem;
-    }
+    .empty { text-align: center; color: var(--text-muted); padding: 36px 20px; font-size: 0.9rem; }
     .empty-icon { font-size: 2.5rem; margin-bottom: 8px; }
 
-    /* ── Responsive: tablet+ two-column layout ── */
     @media (min-width: 700px) {
       body { padding: 24px; }
-      .main-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-        align-items: start;
-      }
-      .main-grid .full-width { grid-column: 1 / -1; }
+      .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
     }
+
+    /* ══════════════════════════════════
+       TIMER MODAL
+    ══════════════════════════════════ */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(15,23,42,0.55);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: #fff; border-radius: 20px; padding: 28px 24px 24px;
+      width: 100%; max-width: 380px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      transform: translateY(16px) scale(0.97);
+      transition: transform 0.25s cubic-bezier(.22,1,.36,1);
+      text-align: center;
+    }
+    .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+
+    .modal-close {
+      position: absolute; top: 14px; right: 14px;
+      background: var(--border); border: none; border-radius: 50%;
+      width: 32px; height: 32px; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text-muted);
+    }
+    .modal-close:hover { background: var(--red-light); color: var(--red); }
+
+    .modal-task-name {
+      font-size: 1rem; font-weight: 700; color: var(--text);
+      margin-bottom: 20px; line-height: 1.3;
+      padding: 0 8px;
+    }
+
+    /* Phase badge */
+    .phase-badge {
+      display: inline-block;
+      padding: 4px 14px; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .phase-wait   { background: var(--orange-light); color: #92400e; }
+    .phase-active { background: var(--green-light);  color: #166534; }
+    .phase-free   { background: var(--blue-light);   color: var(--blue-dark); }
+    .phase-done   { background: var(--border);        color: var(--text-muted); }
+
+    /* SVG ring */
+    .ring-wrap { position: relative; width: 180px; height: 180px; margin: 0 auto 20px; }
+    .ring-wrap svg { transform: rotate(-90deg); }
+    .ring-bg   { fill: none; stroke: var(--border); stroke-width: 10; }
+    .ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 0.8s ease, stroke 0.4s; }
+
+    .ring-center {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .ring-time {
+      font-size: clamp(1.6rem, 8vw, 2.1rem);
+      font-weight: 800; letter-spacing: -0.02em; color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+    .ring-label { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Timer controls */
+    .timer-controls { display: flex; gap: 10px; justify-content: center; margin-top: 4px; }
+    .btn-pause  { background: var(--orange-light); color: #92400e; padding: 9px 20px; }
+    .btn-pause:hover  { background: var(--orange); color: #fff; }
+    .btn-resume { background: var(--green-light);  color: #166534; padding: 9px 20px; }
+    .btn-resume:hover { background: var(--green);  color: #fff; }
+    .btn-stop   { background: var(--red-light);    color: var(--red);    padding: 9px 20px; }
+    .btn-stop:hover   { background: var(--red);    color: #fff; }
+    .btn-start-now { background: var(--blue); color: #fff; padding: 9px 20px; }
+    .btn-start-now:hover { background: var(--blue-dark); }
+
+    /* Pulse animation when active */
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.6; }
+    }
+    .ring-active .ring-fill { animation: pulse-ring 2s ease-in-out infinite; }
+
+    /* Notification ping */
+    .notif-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--green); display: inline-block;
+      animation: ping 1s cubic-bezier(0,0,0.2,1) infinite;
+      margin-right: 6px;
+    }
+    @keyframes ping {
+      75%, 100% { transform: scale(2); opacity: 0; }
+    }
+
+    /* Floating active timer bar (bottom) */
+    #float-bar {
+      position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+      z-index: 900;
+      background: #1e293b; color: #fff;
+      border-radius: 999px; padding: 10px 20px;
+      display: none; align-items: center; gap: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      font-size: 0.875rem; font-weight: 600;
+      cursor: pointer; white-space: nowrap;
+      max-width: calc(100vw - 32px);
+    }
+    #float-bar.visible { display: flex; }
+    #float-bar:hover { background: #0f172a; }
+    #float-time { font-variant-numeric: tabular-nums; }
   </style>
 </head>
 <body>
@@ -345,23 +292,12 @@
   <!-- ══ APP ══ -->
   <div id="app-section">
 
-    <!-- Stats -->
     <div class="stats">
-      <div class="stat-card">
-        <div class="stat-number stat-total" id="stat-total">0</div>
-        <div class="stat-label">Total</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number stat-pending" id="stat-pending">0</div>
-        <div class="stat-label">En attente</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number stat-done" id="stat-done">0</div>
-        <div class="stat-label">Terminées</div>
-      </div>
+      <div class="stat-card"><div class="stat-number stat-total" id="stat-total">0</div><div class="stat-label">Total</div></div>
+      <div class="stat-card"><div class="stat-number stat-pending" id="stat-pending">0</div><div class="stat-label">En attente</div></div>
+      <div class="stat-card"><div class="stat-number stat-done" id="stat-done">0</div><div class="stat-label">Terminées</div></div>
     </div>
 
-    <!-- Two-column on tablet+ -->
     <div class="main-grid">
 
       <!-- Form -->
@@ -375,14 +311,8 @@
           <input type="text" id="new-task" placeholder="Ex: Révision Maths Chapitre 3" />
         </div>
         <div class="row">
-          <div class="field">
-            <label>Début</label>
-            <input type="time" id="start-time" />
-          </div>
-          <div class="field">
-            <label>Fin</label>
-            <input type="time" id="end-time" />
-          </div>
+          <div class="field"><label>Début</label><input type="time" id="start-time" /></div>
+          <div class="field"><label>Fin</label><input type="time" id="end-time" /></div>
         </div>
         <div class="row">
           <div class="field">
@@ -408,7 +338,7 @@
       </div>
 
       <!-- Task list -->
-      <div class="card full-width" style="grid-column: unset">
+      <div class="card" style="grid-column: unset">
         <div class="card-title">📋 Mes tâches</div>
         <div class="filters">
           <button class="filter-btn active" onclick="setFilter('toutes', this)">Toutes</button>
@@ -418,26 +348,89 @@
         <div id="tasks-list"></div>
       </div>
 
-    </div><!-- /main-grid -->
+    </div>
+  </div>
+</div>
 
-  </div><!-- /app-section -->
+<!-- ══ TIMER MODAL ══ -->
+<div class="modal-overlay" id="timer-modal" onclick="handleOverlayClick(event)">
+  <div class="modal" style="position:relative">
+    <button class="modal-close" onclick="closeTimer()">✕</button>
+    <div class="modal-task-name" id="t-title"></div>
+    <div class="phase-badge" id="t-phase-badge"></div>
 
-</div><!-- /container -->
+    <div class="ring-wrap" id="t-ring-wrap">
+      <svg width="180" height="180" viewBox="0 0 180 180">
+        <circle class="ring-bg"   cx="90" cy="90" r="80"/>
+        <circle class="ring-fill" cx="90" cy="90" r="80" id="t-ring-fill"
+          stroke-dasharray="502" stroke-dashoffset="0"/>
+      </svg>
+      <div class="ring-center">
+        <div class="ring-time"  id="t-display">--:--</div>
+        <div class="ring-label" id="t-sublabel"></div>
+      </div>
+    </div>
+
+    <div class="timer-controls" id="t-controls"></div>
+  </div>
+</div>
+
+<!-- ══ FLOATING BAR ══ -->
+<div id="float-bar" onclick="reopenTimer()">
+  <span id="float-phase"></span>
+  <span id="float-time">--:--</span>
+  <span style="font-size:0.75rem; opacity:0.6">Tap pour voir</span>
+</div>
 
 <script>
+  /* ─── Supabase ─── */
   const SUPABASE_URL = "https://bxpatupsirntpwkkrjas.supabase.co";
   const ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4cGF0dXBzaXJudHB3a2tyamFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5NDEzMjAsImV4cCI6MjA5MTUxNzMyMH0.cDkJIBYIdNJHhmQqQVJbiooO17ERBQ9z0Icf7zaXyFg";
 
-  let token = null;
-  let userId = null;
-  let currentFilter = "toutes";
-  let allTasks = [];
+  let token = null, userId = null, currentFilter = "toutes", allTasks = [];
 
+  /* ─── Timer state ─── */
+  let timerTask     = null;  // the task object being timed
+  let timerInterval = null;
+  let timerPaused   = false;
+  let freeElapsed   = 0;     // seconds elapsed for free stopwatch
+  let freeStart     = null;  // Date when free timer last resumed
+  const CIRC        = 2 * Math.PI * 80; // ~502
+
+  /* ─── Utils ─── */
+  function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
+  function fmtSec(s) {
+    if (s < 0) s = 0;
+    const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+    return h > 0 ? `${pad(h)}:${pad(m)}:${pad(sec)}` : `${pad(m)}:${pad(sec)}`;
+  }
+
+  // Convert "HH:MM" or "HH:MM:SS" to today's Date
+  function timeStrToDate(str) {
+    if (!str) return null;
+    const parts = str.split(':');
+    const d = new Date();
+    d.setHours(parseInt(parts[0]), parseInt(parts[1]), parseInt(parts[2] || 0), 0);
+    return d;
+  }
+
+  function playBeep(freq = 880, dur = 0.3) {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.4, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+      osc.start(); osc.stop(ctx.currentTime + dur);
+    } catch(e) {}
+  }
+
+  /* ─── Auth ─── */
   function showMessage(msg, type = "success") {
     const el = document.getElementById("message");
-    el.className = "message " + type;
-    el.textContent = msg;
-    el.style.display = "block";
+    el.className = "message " + type; el.textContent = msg; el.style.display = "block";
     setTimeout(() => { el.style.display = "none"; }, 3000);
   }
 
@@ -446,20 +439,12 @@
     const password = document.getElementById("password").value;
     if (!email || !password) return showMessage("Email et mot de passe requis", "error");
     const res = await fetch(`${SUPABASE_URL}/auth/v1/signup`, {
-      method: "POST",
-      headers: { "apikey": ANON_KEY, "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
+      method:"POST", headers:{"apikey":ANON_KEY,"Content-Type":"application/json"},
+      body: JSON.stringify({email,password})
     });
     const data = await res.json();
-    if (data.access_token) {
-      token = data.access_token;
-      userId = data.user.id;
-      showMessage("Inscription réussie !");
-      showApp();
-      loadTasks();
-    } else {
-      showMessage(data.msg || data.error_description || "Erreur lors de l'inscription", "error");
-    }
+    if (data.access_token) { token=data.access_token; userId=data.user.id; showMessage("Inscription réussie !"); showApp(); loadTasks(); }
+    else showMessage(data.msg||data.error_description||"Erreur","error");
   }
 
   async function login() {
@@ -467,151 +452,326 @@
     const password = document.getElementById("password").value;
     if (!email || !password) return showMessage("Email et mot de passe requis", "error");
     const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
-      method: "POST",
-      headers: { "apikey": ANON_KEY, "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
+      method:"POST", headers:{"apikey":ANON_KEY,"Content-Type":"application/json"},
+      body: JSON.stringify({email,password})
     });
     const data = await res.json();
-    if (data.access_token) {
-      token = data.access_token;
-      userId = data.user.id;
-      showMessage("Connecté avec succès !");
-      showApp();
-      loadTasks();
-    } else {
-      showMessage(data.msg || data.error_description || "Identifiants incorrects", "error");
-    }
+    if (data.access_token) { token=data.access_token; userId=data.user.id; showMessage("Connecté !"); showApp(); loadTasks(); }
+    else showMessage(data.msg||data.error_description||"Identifiants incorrects","error");
   }
 
   function logout() {
-    token = null; userId = null; allTasks = [];
-    document.getElementById("auth-section").style.display = "block";
-    document.getElementById("app-section").style.display = "none";
-    document.getElementById("email").value = "";
-    document.getElementById("password").value = "";
+    stopTimer();
+    token=null; userId=null; allTasks=[];
+    document.getElementById("auth-section").style.display="block";
+    document.getElementById("app-section").style.display="none";
+    document.getElementById("email").value="";
+    document.getElementById("password").value="";
   }
-
   function showApp() {
-    document.getElementById("auth-section").style.display = "none";
-    document.getElementById("app-section").style.display = "block";
+    document.getElementById("auth-section").style.display="none";
+    document.getElementById("app-section").style.display="block";
   }
 
+  /* ─── Tasks ─── */
   function setFilter(filter, btn) {
-    currentFilter = filter;
-    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    renderTasks();
+    currentFilter=filter;
+    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active"); renderTasks();
   }
 
   async function loadTasks() {
     const res = await fetch(`${SUPABASE_URL}/rest/v1/tasks?order=start_time.asc`, {
-      headers: { "apikey": ANON_KEY, "Authorization": `Bearer ${token}` }
+      headers:{"apikey":ANON_KEY,"Authorization":`Bearer ${token}`}
     });
     allTasks = await res.json();
-    if (!Array.isArray(allTasks)) allTasks = [];
-    updateStats();
-    renderTasks();
+    if (!Array.isArray(allTasks)) allTasks=[];
+    updateStats(); renderTasks();
   }
 
   function updateStats() {
-    const total = allTasks.length;
-    const done = allTasks.filter(t => t.done).length;
-    const pending = total - done;
-    document.getElementById("stat-total").textContent = total;
-    document.getElementById("stat-done").textContent = done;
-    document.getElementById("stat-pending").textContent = pending;
+    const total=allTasks.length, done=allTasks.filter(t=>t.done).length, pending=total-done;
+    document.getElementById("stat-total").textContent=total;
+    document.getElementById("stat-done").textContent=done;
+    document.getElementById("stat-pending").textContent=pending;
   }
 
-  const catLabels = { etude: "📖 Étude", revision: "🔄 Révision", exercice: "✏️ Exercice", lecture: "📚 Lecture", projet: "💼 Projet" };
-  const prioIcon  = { haute: "🔴", normale: "🟢", basse: "🟡" };
+  const catLabels={etude:"📖 Étude",revision:"🔄 Révision",exercice:"✏️ Exercice",lecture:"📚 Lecture",projet:"💼 Projet"};
+  const prioIcon ={haute:"🔴",normale:"🟢",basse:"🟡"};
 
   function renderTasks() {
-    let filtered = allTasks;
-    if (currentFilter === "done")    filtered = allTasks.filter(t => t.done);
-    if (currentFilter === "pending") filtered = allTasks.filter(t => !t.done);
-
-    const list = document.getElementById("tasks-list");
-    if (filtered.length === 0) {
-      list.innerHTML = `
-        <div class="empty">
-          <div class="empty-icon">📭</div>
-          Aucune tâche ici
-        </div>`;
+    let filtered=allTasks;
+    if (currentFilter==="done")    filtered=allTasks.filter(t=>t.done);
+    if (currentFilter==="pending") filtered=allTasks.filter(t=>!t.done);
+    const list=document.getElementById("tasks-list");
+    if (!filtered.length) {
+      list.innerHTML=`<div class="empty"><div class="empty-icon">📭</div>Aucune tâche ici</div>`;
       return;
     }
-
-    list.innerHTML = filtered.map(t => `
-      <div class="task-item ${t.done ? 'done' : 'pending'}">
+    list.innerHTML=filtered.map(t=>`
+      <div class="task-item ${t.done?'done':'pending'}">
         <div class="task-header">
-          <span class="task-title ${t.done ? 'done-text' : ''}">${escHtml(t.title)}</span>
+          <span class="task-title ${t.done?'done-text':''}">${escHtml(t.title)}</span>
           <div class="task-actions">
-            <button class="${t.done ? 'btn-gray' : 'btn-success'}" onclick="toggleTask('${t.id}', ${t.done})">
-              ${t.done ? '↩ Annuler' : '✅ Fait'}
-            </button>
+            ${!t.done ? `<button class="btn-timer" onclick="openTimer('${t.id}')">⏱ Minuteur</button>` : ''}
+            <button class="${t.done?'btn-gray':'btn-success'}" onclick="toggleTask('${t.id}',${t.done})">${t.done?'↩ Annuler':'✅ Fait'}</button>
             <button class="btn-danger" onclick="deleteTask('${t.id}')">🗑</button>
           </div>
         </div>
         <div class="task-meta">
-          ${t.start_time ? `<span class="badge badge-time">⏰ ${t.start_time}${t.end_time ? ' - ' + t.end_time : ''}</span>` : ''}
-          ${t.category ? `<span class="badge badge-category">${catLabels[t.category] || t.category}</span>` : ''}
-          ${t.priority ? `<span class="badge badge-${t.priority}">${prioIcon[t.priority] || ''} ${t.priority}</span>` : ''}
+          ${t.start_time?`<span class="badge badge-time">⏰ ${t.start_time}${t.end_time?' - '+t.end_time:''}</span>`:''}
+          ${t.category?`<span class="badge badge-category">${catLabels[t.category]||t.category}</span>`:''}
+          ${t.priority?`<span class="badge badge-${t.priority}">${prioIcon[t.priority]||''} ${t.priority}</span>`:''}
         </div>
-      </div>
-    `).join("");
+      </div>`).join("");
   }
 
-  function escHtml(str) {
-    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
+  function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
   async function createTask() {
-    const title = document.getElementById("new-task").value.trim();
-    if (!title) return showMessage("Le titre est requis", "error");
-    const start_time = document.getElementById("start-time").value || null;
-    const end_time   = document.getElementById("end-time").value   || null;
-    const category   = document.getElementById("category").value;
-    const priority   = document.getElementById("priority").value;
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/tasks`, {
-      method: "POST",
-      headers: {
-        "apikey": ANON_KEY,
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": "application/json",
-        "Prefer": "return=minimal"
-      },
-      body: JSON.stringify({ title, start_time, end_time, category, priority, user_id: userId })
+    const title=document.getElementById("new-task").value.trim();
+    if (!title) return showMessage("Le titre est requis","error");
+    const start_time=document.getElementById("start-time").value||null;
+    const end_time=document.getElementById("end-time").value||null;
+    const category=document.getElementById("category").value;
+    const priority=document.getElementById("priority").value;
+    const res=await fetch(`${SUPABASE_URL}/rest/v1/tasks`,{
+      method:"POST",
+      headers:{"apikey":ANON_KEY,"Authorization":`Bearer ${token}`,"Content-Type":"application/json","Prefer":"return=minimal"},
+      body:JSON.stringify({title,start_time,end_time,category,priority,user_id:userId})
     });
-    if (res.ok || res.status === 201) {
-      document.getElementById("new-task").value = "";
-      document.getElementById("start-time").value = "";
-      document.getElementById("end-time").value = "";
-      showMessage("Tâche ajoutée !");
-      loadTasks();
-    } else {
-      showMessage("Erreur lors de l'ajout", "error");
-    }
+    if (res.ok||res.status===201){
+      document.getElementById("new-task").value="";
+      document.getElementById("start-time").value="";
+      document.getElementById("end-time").value="";
+      showMessage("Tâche ajoutée !"); loadTasks();
+    } else showMessage("Erreur lors de l'ajout","error");
   }
 
-  async function toggleTask(id, done) {
-    await fetch(`${SUPABASE_URL}/rest/v1/tasks?id=eq.${id}`, {
-      method: "PATCH",
-      headers: {
-        "apikey": ANON_KEY,
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ done: !done })
+  async function toggleTask(id,done){
+    await fetch(`${SUPABASE_URL}/rest/v1/tasks?id=eq.${id}`,{
+      method:"PATCH",
+      headers:{"apikey":ANON_KEY,"Authorization":`Bearer ${token}`,"Content-Type":"application/json"},
+      body:JSON.stringify({done:!done})
     });
     loadTasks();
   }
 
-  async function deleteTask(id) {
+  async function deleteTask(id){
     if (!confirm("Supprimer cette tâche ?")) return;
-    await fetch(`${SUPABASE_URL}/rest/v1/tasks?id=eq.${id}`, {
-      method: "DELETE",
-      headers: { "apikey": ANON_KEY, "Authorization": `Bearer ${token}` }
+    await fetch(`${SUPABASE_URL}/rest/v1/tasks?id=eq.${id}`,{
+      method:"DELETE",headers:{"apikey":ANON_KEY,"Authorization":`Bearer ${token}`}
     });
     loadTasks();
+  }
+
+  /* ─────────────────────────────────────────
+     TIMER LOGIC
+  ───────────────────────────────────────── */
+  function openTimer(taskId) {
+    const task = allTasks.find(t => t.id == taskId);
+    if (!task) return;
+    timerTask = task;
+    timerPaused = false;
+    freeElapsed = 0;
+    freeStart = null;
+
+    document.getElementById("t-title").textContent = task.title;
+    document.getElementById("timer-modal").classList.add("open");
+
+    startTimerLoop();
+    updateFloatBar();
+  }
+
+  function reopenTimer() {
+    if (!timerTask) return;
+    document.getElementById("timer-modal").classList.add("open");
+  }
+
+  function closeTimer() {
+    document.getElementById("timer-modal").classList.remove("open");
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById("timer-modal")) closeTimer();
+  }
+
+  function stopTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    timerTask = null;
+    document.getElementById("timer-modal").classList.remove("open");
+    document.getElementById("float-bar").classList.remove("visible");
+  }
+
+  function pauseTimer() {
+    if (timerPaused) return;
+    timerPaused = true;
+    if (freeStart !== null) {
+      freeElapsed += Math.floor((Date.now() - freeStart) / 1000);
+      freeStart = null;
+    }
+    renderTimerUI();
+  }
+
+  function resumeTimer() {
+    if (!timerPaused) return;
+    timerPaused = false;
+    if (freeStart === null && !timerTask?.start_time) {
+      freeStart = Date.now() - freeElapsed * 1000;
+    } else if (timerTask && !timerTask.start_time) {
+      freeStart = Date.now() - freeElapsed * 1000;
+    }
+    renderTimerUI();
+  }
+
+  function startTimerLoop() {
+    clearInterval(timerInterval);
+
+    // For free stopwatch (no start_time): start counting immediately
+    if (timerTask && !timerTask.start_time) {
+      freeStart = Date.now();
+    }
+
+    renderTimerUI();
+    timerInterval = setInterval(() => {
+      if (!timerPaused) {
+        renderTimerUI();
+      }
+    }, 1000);
+  }
+
+  function getPhase() {
+    if (!timerTask) return null;
+    const now = new Date();
+
+    if (!timerTask.start_time) return { phase: 'free' };
+
+    const startDate = timeStrToDate(timerTask.start_time);
+    const endDate   = timerTask.end_time ? timeStrToDate(timerTask.end_time) : null;
+
+    if (now < startDate) return { phase: 'wait', start: startDate, end: endDate };
+    if (endDate && now > endDate) return { phase: 'over', start: startDate, end: endDate };
+    return { phase: 'active', start: startDate, end: endDate };
+  }
+
+  function renderTimerUI() {
+    if (!timerTask) return;
+    const p = getPhase();
+    const phaseBadge = document.getElementById("t-phase-badge");
+    const display    = document.getElementById("t-display");
+    const sublabel   = document.getElementById("t-sublabel");
+    const ringFill   = document.getElementById("t-ring-fill");
+    const ringWrap   = document.getElementById("t-ring-wrap");
+    const controls   = document.getElementById("t-controls");
+
+    let timeStr = "--:--", sub = "", ringColor = "#4f8ef7", progress = 0;
+
+    if (p.phase === 'free') {
+      // Free stopwatch
+      if (!timerPaused && freeStart !== null) {
+        freeElapsed = Math.floor((Date.now() - freeStart) / 1000);
+      }
+      timeStr = fmtSec(freeElapsed);
+      sub = timerPaused ? "En pause" : "Temps écoulé";
+      ringColor = "#4f8ef7";
+      progress = Math.min(freeElapsed / 3600, 1); // fills over 1h
+
+      phaseBadge.textContent = "⏱ Chronomètre libre";
+      phaseBadge.className = "phase-badge phase-free";
+      ringWrap.classList.remove("ring-active");
+
+      controls.innerHTML = timerPaused
+        ? `<button class="btn-resume" onclick="resumeTimer()">▶ Reprendre</button>
+           <button class="btn-stop" onclick="stopTimer()">⏹ Arrêter</button>`
+        : `<button class="btn-pause" onclick="pauseTimer()">⏸ Pause</button>
+           <button class="btn-stop" onclick="stopTimer()">⏹ Arrêter</button>`;
+
+    } else if (p.phase === 'wait') {
+      const diff = Math.max(0, Math.floor((p.start - Date.now()) / 1000));
+      timeStr = fmtSec(diff);
+      sub = "avant le début";
+      ringColor = "#f59e0b";
+      // Progress ring goes from full → empty as countdown goes to 0
+      const total = timerTask.start_time
+        ? Math.max(1, Math.floor((p.start - new Date(new Date().setHours(0,0,0,0))) / 1000))
+        : 1;
+      progress = diff / Math.max(1, total);
+
+      phaseBadge.textContent = "⏳ En attente";
+      phaseBadge.className = "phase-badge phase-wait";
+      ringWrap.classList.remove("ring-active");
+
+      controls.innerHTML = `<button class="btn-start-now" onclick="forceStart()">▶ Démarrer maintenant</button>
+                            <button class="btn-stop" onclick="stopTimer()">⏹ Fermer</button>`;
+
+      // Notify when timer hits 0
+      if (diff === 0) { playBeep(880, 0.4); playBeep(1100, 0.4); }
+
+    } else if (p.phase === 'active') {
+      if (p.end) {
+        const remaining = Math.max(0, Math.floor((p.end - Date.now()) / 1000));
+        const total     = Math.max(1, Math.floor((p.end - p.start) / 1000));
+        timeStr  = fmtSec(remaining);
+        sub      = timerPaused ? "En pause" : "Temps restant";
+        progress = remaining / total;
+        ringColor = "#34c77b";
+        if (remaining === 0) { playBeep(660, 0.5); playBeep(440, 0.5); }
+      } else {
+        // No end time: show elapsed
+        const elapsed = Math.max(0, Math.floor((Date.now() - p.start) / 1000));
+        timeStr  = fmtSec(elapsed);
+        sub      = timerPaused ? "En pause" : "Temps écoulé";
+        progress = Math.min(elapsed / 3600, 1);
+        ringColor = "#34c77b";
+      }
+
+      phaseBadge.innerHTML = `<span class="notif-dot"></span> En cours`;
+      phaseBadge.className = "phase-badge phase-active";
+      ringWrap.classList.toggle("ring-active", !timerPaused);
+
+      controls.innerHTML = timerPaused
+        ? `<button class="btn-resume" onclick="resumeTimer()">▶ Reprendre</button>
+           <button class="btn-stop" onclick="stopTimer()">⏹ Arrêter</button>`
+        : `<button class="btn-pause" onclick="pauseTimer()">⏸ Pause</button>
+           <button class="btn-stop" onclick="stopTimer()">⏹ Arrêter</button>`;
+
+    } else if (p.phase === 'over') {
+      timeStr = "00:00";
+      sub     = "Terminé !";
+      ringColor = "#94a3b8";
+      progress  = 0;
+      phaseBadge.textContent = "✅ Session terminée";
+      phaseBadge.className   = "phase-badge phase-done";
+      ringWrap.classList.remove("ring-active");
+      controls.innerHTML = `<button class="btn-stop" onclick="stopTimer()">Fermer</button>`;
+    }
+
+    display.textContent    = timeStr;
+    sublabel.textContent   = sub;
+    ringFill.style.stroke  = ringColor;
+    const offset = CIRC - (progress * CIRC);
+    ringFill.style.strokeDashoffset = offset;
+
+    updateFloatBar(timeStr, p.phase);
+  }
+
+  function forceStart() {
+    // Pretend the task started now (free timer from this point)
+    timerTask = { ...timerTask, start_time: null };
+    freeStart = Date.now();
+    freeElapsed = 0;
+    renderTimerUI();
+  }
+
+  function updateFloatBar(timeStr, phase) {
+    const bar = document.getElementById("float-bar");
+    if (!timerTask) { bar.classList.remove("visible"); return; }
+    bar.classList.add("visible");
+    const phaseEl = document.getElementById("float-phase");
+    const timeEl  = document.getElementById("float-time");
+    phaseEl.textContent = phase === "wait" ? "⏳" : phase === "active" ? "▶" : "⏱";
+    if (timeStr) timeEl.textContent = timeStr;
   }
 </script>
 </body>
