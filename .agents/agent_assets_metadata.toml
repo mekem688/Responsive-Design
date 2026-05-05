@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "B4p8uqIktdBiA-aLtsjgi"
+uri = "file://artifacts/study-planner-mobile/assets/images/icon.png"
+type = "image"
+title = "study planner app icon"
